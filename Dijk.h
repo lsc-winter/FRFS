@@ -4,9 +4,9 @@
 
 
 #pragma once
-//#pragma onceÊÇÒ»¸ö±È½Ï³£ÓÃµÄC/C++ÔÓ×¢£¬
-//Ö»ÒªÔÚÍ·ÎÄ¼şµÄ×î¿ªÊ¼¼ÓÈëÕâÌõÔÓ×¢£¬
-//¾ÍÄÜ¹»±£Ö¤Í·ÎÄ¼şÖ»±»±àÒëÒ»´Î¡£
+//#pragma onceæ˜¯ä¸€ä¸ªæ¯”è¾ƒå¸¸ç”¨çš„C/C++æ‚æ³¨ï¼Œ
+//åªè¦åœ¨å¤´æ–‡ä»¶çš„æœ€å¼€å§‹åŠ å…¥è¿™æ¡æ‚æ³¨ï¼Œ
+//å°±èƒ½å¤Ÿä¿è¯å¤´æ–‡ä»¶åªè¢«ç¼–è¯‘ä¸€æ¬¡ã€‚
 
 #include<iostream>
 #include<string>
@@ -25,10 +25,10 @@
 using namespace std;
 
 /*
-±¾³ÌĞòÊÇÊ¹ÓÃDijkstraËã·¨ÊµÏÖÇó½â×î¶ÌÂ·¾¶µÄÎÊÌâ
-²ÉÓÃµÄÁÚ½Ó¾ØÕóÀ´´æ´¢Í¼
+æœ¬ç¨‹åºæ˜¯ä½¿ç”¨æ”¹è¿›çš„Dijkstraç®—æ³•å®ç°æ±‚è§£æœ€çŸ­è·¯å¾„çš„é—®é¢˜
+é‡‡ç”¨çš„é‚»æ¥çŸ©é˜µæ¥å­˜å‚¨å›¾
 */
-//¶¨Òå½Úµã½á¹¹Ìå
+//å®šä¹‰èŠ‚ç‚¹ç»“æ„ä½“
 struct V {
     int nodeindex;
     int portnum;
@@ -36,7 +36,7 @@ struct V {
     int T_num;
     double w[64][64];
     double W_t[64][64];
-    string T;  //Ö§³ÖĞÅµÀ£¬×Ö·û³¤¶ÈÎªÖ§³ÖĞÅµÀÊı
+    string T;  //æ”¯æŒä¿¡é“ï¼Œå­—ç¬¦é•¿åº¦ä¸ºæ”¯æŒä¿¡é“æ•°
     V(){
         nodeindex = 0;
         portnum =0;
@@ -57,7 +57,7 @@ struct E {
     int dstn;
     int dstp;
     double weight;
-//    string T;  //Ö§³ÖĞÅµÀ£¬×Ö·û³¤¶ÈÎªÖ§³ÖĞÅµÀÊı
+//    string T;  //æ”¯æŒä¿¡é“ï¼Œå­—ç¬¦é•¿åº¦ä¸ºæ”¯æŒä¿¡é“æ•°
     E(){
         srcn = 0;
         srcp = 0;
@@ -82,7 +82,7 @@ struct C{
     }
 };
 
-//¼ÇÂ¼Æğµãµ½Ã¿¸ö¶Ë¿ÚµÄ×î¶ÌÂ·¾¶µÄĞÅÏ¢
+//è®°å½•èµ·ç‚¹åˆ°æ¯ä¸ªç«¯å£çš„æœ€çŸ­è·¯å¾„çš„ä¿¡æ¯
 struct Dist {
     string path[64];
     double value[64];
@@ -90,21 +90,21 @@ struct Dist {
     int bridge;
     Dist() {
 //        visit = false;
-//        value = 2000; //0->ÎŞÇî´ó
-        for (int j = 0; j < 64; j++) {//Ã¿¸ö¶Ë¿ÚÒ»¸öÖµ¿ÉÄÜ»á±»¸²¸Çµô£¬Ó¦¸ÃÓÃ¸öÕ»»òÏòÁ¿ //Ïàµ±ÓÚÒ»´Î×ßÁËÁ½²½
-            value[j] = 2000; //0->ÎŞÇî´ó
+//        value = 2000; //0->æ— ç©·å¤§
+        for (int j = 0; j < 64; j++) {//æ¯ä¸ªç«¯å£ä¸€ä¸ªå€¼å¯èƒ½ä¼šè¢«è¦†ç›–æ‰ï¼Œåº”è¯¥ç”¨ä¸ªæ ˆæˆ–å‘é‡ //ç›¸å½“äºä¸€æ¬¡èµ°äº†ä¸¤æ­¥
+            value[j] = 2000; //0->æ— ç©·å¤§
             visit[j] = 1;
 
         }
-        for (int j = 0; j < 64; j++) {//Ã¿¸ö¶Ë¿ÚÒ»¸öÖµ¿ÉÄÜ»á±»¸²¸Çµô£¬Ó¦¸ÃÓÃ¸öÕ»»òÏòÁ¿ //Ïàµ±ÓÚÒ»´Î×ßÁËÁ½²½
-            path[j] = ""; //0->ÎŞÇî´ó
+        for (int j = 0; j < 64; j++) {//æ¯ä¸ªç«¯å£ä¸€ä¸ªå€¼å¯èƒ½ä¼šè¢«è¦†ç›–æ‰ï¼Œåº”è¯¥ç”¨ä¸ªæ ˆæˆ–å‘é‡ //ç›¸å½“äºä¸€æ¬¡èµ°äº†ä¸¤æ­¥
+            path[j] = ""; //0->æ— ç©·å¤§
         }
 //        path = "";
         bridge =0;
     }
 };
 
-//¼ÇÂ¼Æğµãµ½Ã¿¸ö¶¥µãµÄ×î¶ÌÂ·¾¶µÄĞÅÏ¢
+//è®°å½•èµ·ç‚¹åˆ°æ¯ä¸ªé¡¶ç‚¹çš„æœ€çŸ­è·¯å¾„çš„ä¿¡æ¯
 struct Dis {
     string path;
     double value;
@@ -112,9 +112,9 @@ struct Dis {
     int bridge;
     Dis() {
         visit = false;
-        value = 2000; //0->ÎŞÇî´ó
+        value = 2000; //0->æ— ç©·å¤§
 //        for (int j = 0; j < 64; j++) {
-//            value[j] = 2000; //0->ÎŞÇî´ó
+//            value[j] = 2000; //0->æ— ç©·å¤§
 //        }
         path = "";
         bridge =0;
@@ -126,53 +126,53 @@ private:
 //     double e;
 //     double c[64][64];
 
-    int vexnum;   //Í¼µÄ¶¥µã¸öÊı
+    int vexnum;   //å›¾çš„é¡¶ç‚¹ä¸ªæ•°
     int edgenum;
-    int edge;     //Í¼µÄ±ßÊı
-    double **arc;   //ÁÚ½Ó¾ØÕó
+    int edge;     //å›¾çš„è¾¹æ•°
+    double **arc;   //é‚»æ¥çŸ©é˜µ
     double **C_ij;
-    Dis * dis;   //¼ÇÂ¼¸÷¸ö¶¥µã×î¶ÌÂ·¾¶µÄĞÅÏ¢
+    Dis * dis;   //è®°å½•å„ä¸ªé¡¶ç‚¹æœ€çŸ­è·¯å¾„çš„ä¿¡æ¯
     Dist * dist;
     V *v;
     E *e;
     C *c;
 public:
-    //¹¹Ôìº¯Êı
+    //æ„é€ å‡½æ•°
     Graph_DG(int vexnum, int edgenum);
-    //Îö¹¹º¯Êı
+    //ææ„å‡½æ•°
     ~Graph_DG();
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
     void initialize( double c, int s, double l, string p, string U);
-    //´´½¨½ÚµãËğºÄ¾ØÕó
+    //åˆ›å»ºèŠ‚ç‚¹æŸè€—çŸ©é˜µ
     void createnode();
-    //¼ÆËãÄ¿µÄ¶Ë¿Úµ½Ä¿±ê½ÚµãµÄÁ¬½ÓËğÊ§¾ØÕó
+    //è®¡ç®—ç›®çš„ç«¯å£åˆ°ç›®æ ‡èŠ‚ç‚¹çš„è¿æ¥æŸå¤±çŸ©é˜µ
     void Y(int begin, int port, int dest, double* loss, int* ecount);
-    //´´½¨C_ij
+    //åˆ›å»ºC_ij
     void createC_ij(int srcn, int srcp, int desn, int desp, int loss);
-    //´´½¨E
+    //åˆ›å»ºE
 //    void createE( int edgenum,int srcn, int srcp, int desn, int desp, int loss);
     void createE( );
-    //6.10Ä§¸Ä°æ
+    //6.10é­”æ”¹ç‰ˆ
     void Dijkstra11(int begin, int ch);
     //6.13
     void LPLS(int begin, int dst, int ch);
-    //ÌáÈ¡Á¬½Óport
+    //æå–è¿æ¥port
     int con_port(int end);
-    //´´½¨ÁÙÊ±¾ØÕó
+    //åˆ›å»ºä¸´æ—¶çŸ©é˜µ
     void create_W_t();
-    //´´½¨ÁÙÊ±¾ØÕó
+    //åˆ›å»ºä¸´æ—¶çŸ©é˜µ
     void print_W_t();
-    //Ëø½Úµã
+    //é”èŠ‚ç‚¹
     void lock(int path, int k);
-    //Ëø½Úµã
+    //é”èŠ‚ç‚¹
     void lock1(int path, int k);
-    //½âËø
+    //è§£é”
     void unlock(int path);
-    //ÌáÈ¡Â·¾¶ÖĞÔªËØ
+    //æå–è·¯å¾„ä¸­å…ƒç´ 
     void extract(int path, int k);
-    //ÌáÈ¡Â·¾¶ÖĞÔªËØ
+    //æå–è·¯å¾„ä¸­å…ƒç´ 
     void extract1(int path, int k);
-    //´òÓ¡×î¶ÌÂ·¾¶
+    //æ‰“å°æœ€çŸ­è·¯å¾„
     void print_path1(int);
 
 
@@ -180,40 +180,40 @@ public:
 
 
 
-    // ÅĞ¶ÏÎÒÃÇÃ¿´ÎÊäÈëµÄµÄ±ßµÄĞÅÏ¢ÊÇ·ñºÏ·¨
-    //¶¥µã´Ó1¿ªÊ¼±àºÅ
+    // åˆ¤æ–­æˆ‘ä»¬æ¯æ¬¡è¾“å…¥çš„çš„è¾¹çš„ä¿¡æ¯æ˜¯å¦åˆæ³•
+    //é¡¶ç‚¹ä»1å¼€å§‹ç¼–å·
     bool check_edge_value(int start, int end, double weight);
-    //´´½¨Í¼
+    //åˆ›å»ºå›¾
     void createGraph();
-    //´´½¨ĞÂÍ¼
+    //åˆ›å»ºæ–°å›¾
     void createGraph1();
-    //´´½¨ĞÂÍ¼
+    //åˆ›å»ºæ–°å›¾
     void createGraph2();
-    //´òÓ¡ÁÚ½Ó¾ØÕó
+    //æ‰“å°é‚»æ¥çŸ©é˜µ
     void print();
-    //´òÓ¡¸üĞÂºóµÄÁÚ½Ó¾ØÕó
+    //æ‰“å°æ›´æ–°åçš„é‚»æ¥çŸ©é˜µ
     void print_new(int begin);
-    //Çó×î¶ÌÂ·¾¶
+    //æ±‚æœ€çŸ­è·¯å¾„
     void Dijkstra(int begin);
-    //Çó×î¶ÌÂ·¾¶
+    //æ±‚æœ€çŸ­è·¯å¾„
     void Dijkstra1(int begin);
-    //Çó×î¶ÌÂ·¾¶
+    //æ±‚æœ€çŸ­è·¯å¾„
     void Dijkstra_new(int begin,int end);
-    //´òÓ¡×î¶ÌÂ·¾¶
+    //æ‰“å°æœ€çŸ­è·¯å¾„
     void print_path(int);
-    //Ëæ»úÉú³ÉÍ¼ÊäÈë
+    //éšæœºç”Ÿæˆå›¾è¾“å…¥
     void rere(int begin,int end);
-    //Ëæ»úÉú³ÉÍ¼ÊäÈë
+    //éšæœºç”Ÿæˆå›¾è¾“å…¥
     void reset_G(int begin);
-    //Ëæ»úÉú³ÉÍ¼ÊäÈë
+    //éšæœºç”Ÿæˆå›¾è¾“å…¥
     double pi(int begin);
-    //µ¥²à
+    //å•ä¾§
     double lp1(int begin,int end);
-    //µ¥²à
+    //å•ä¾§
     double lp2(int begin,int end);
     //LPLF
     double lplf(int begin,int end);
-    //´òÓ¡Â·¾¶ËğºÄ
+    //æ‰“å°è·¯å¾„æŸè€—
     void print_loss(int);
 
 
